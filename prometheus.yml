@@ -36,16 +36,16 @@ instance_groups:
     nginx: ((nginx.local_properties))
     #--- route_registrar
     nats:
-      machines: (( ..cf.nats.ips ))
-      password: (( ..cf.nats.credentials.password ))
+      machines: (( nats.machines ))
+      password: (( nats.password ))
       port: 4222
-      user: (( ..cf.nats.credentials.identity ))
+      user: (( nats.username ))
     route_registrar:
       routes:
         - name: alex-prometheus
           port: 80
           uris:
-            - opsmetrics.(( ..cf.cloud_controller.system_domain.value ))
+            - (( grafana_route ))
           registration_interval: 20s
           tags:
             component: alex-prometheus
