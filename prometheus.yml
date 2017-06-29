@@ -8,6 +8,9 @@ releases:
   version: latest
 - name: prometheus-custom
   version: latest
+- name: routing
+  type: bosh-release
+  path: https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.157.0
 
 stemcells:
 - alias: trusty
@@ -26,8 +29,25 @@ instance_groups:
   jobs:
   - name: nginx
     release: prometheus
+  - name: route_registrar
+    release: routing
   properties:
     nginx: ((nginx.local_properties))
+    #--- route_registrar
+    nats:
+      machines: (( ..cf.nats.ips ))
+      password: (( ..cf.nats.credentials.password ))
+      port: 4222
+      user: (( ..cf.nats.credentials.identity ))
+    route_registrar:
+      routes:
+        - name: alex-prometheus
+          port: 80
+          uris:
+            - opsmetrics.(( ..cf.cloud_controller.system_domain.value ))
+          registration_interval: 20s
+          tags:
+            component: alex-prometheus
   env:
     bosh:
       password: ((nginx.vm_password))
