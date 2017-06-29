@@ -57,12 +57,12 @@ cf_exporter:
     client_secret: ${prometheus_cf_secret}
     deployment_name: ${prometheus_cf_deployment_name}
   skip_ssl_verify: true
-#
-# mysqld_exporter:
-#   mysql:
-#     address: CHANGE_ME
-#     username: exporter
-#     password: CHANGE_ME
+
+mysqld_exporter:
+  mysql:
+    address: 10.0.17.14
+    username: root
+    password: Pee4b94-JJ6pR4u5A8kxKm_8BA_BRuY4
 
 nats:
   password: ${nats_password}
