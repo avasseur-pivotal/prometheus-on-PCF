@@ -26,8 +26,6 @@ instance_groups:
   jobs:
   - name: nginx
     release: prometheus
-  - name: route_registrar
-    release: routing
   properties:
     nginx: ((nginx.local_properties))
   env:
