@@ -9,8 +9,8 @@ releases:
 - name: prometheus-custom
   version: latest
 - name: routing
-  type: bosh-release
-  path: https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.157.0
+  url: https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.157.0
+  sha1: 2971343caa80bbed3fb504357617b9c4dcf755ab
 
 stemcells:
 - alias: trusty
