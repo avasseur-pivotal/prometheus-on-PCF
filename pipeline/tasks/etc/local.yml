@@ -45,7 +45,7 @@ firehose_exporter:
     client_id: ${prometheus_firehose_client}
     client_secret: ${prometheus_firehose_secret}
   doppler:
-    url: wss://doppler.${pcf_sys_domain}
+    url: wss://doppler.${pcf_sys_domain}:4443
   web:
     port: 9186
   skip_ssl_verify: true
